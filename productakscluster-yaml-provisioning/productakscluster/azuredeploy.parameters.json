@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dnsPrefix": {
+      "value": "productcluster"
+    },
+    "linuxAdminUsername": {
+      "value": "hari"
+    },
+    "sshRSAPublicKey": {
+      "value": ""
+    },
+    "resourceName": {
+      "value": "product-dev-eun-cluster"
+    },
+    "clusterVnetAddressPrefix": {
+      "value": "10.0.0.0/8"
+    },
+    "clusterSubnetAddressPrefix": {
+      "value": "10.240.0.0/16"
+    },
+    "kubernetesVersion": {
+      "value": "1.10.9"
+    },
+    "servicePrincipalObjectId": {
+      "value": ""
+    },
+    "networkContributorRoleId": {
+      "value": ""
+    },
+    "vmssMinInstances": {
+      "value": ""
+    },
+    "vmssMaxInstances": {
+      "value": ""
+    }
+  }
+}
