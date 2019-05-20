@@ -24,3 +24,14 @@ steps:
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)/iac'
     ArtifactName: iac
+
+- task: AzureResourceGroupDeployment@2
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise(ce38cf7c-3580-4375-b891-13a38abb98be)'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'product-aks-euw-dev-resgrp'
+    location: 'West Europe'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(build.artifactstagingdirectory)/iac/azuredeploy.json'
+    overrideParameters: '-linuxAdminUsername $(linuxAdminUsername) -sshRSAPublicKey "$(sshRSAPublicKey)" -resourceName $(resourceName) -servicePrincipalClientId $(servicePrincipalClientId) -servicePrincipalClientSecret $(servicePrincipalClientSecret) -aadClientAppId $(aadClientAppId) -aadServerAppId $(aadServerAppId) -aadServerAppSecret $(aadServerAppSecret) -aadTenantId $(aadTenantId) -servicePrincipalObjectId $(servicePrincipalObjectId) -networkContributorRoleId $(networkContributorRoleId) -dnsPrefix $(dnsPrefix) -agentCount 3 -kubernetesVersion "1.12.6" -vmssMinInstances 1 -vmssMaxInstances 5'
+    deploymentMode: 'Incremental'
