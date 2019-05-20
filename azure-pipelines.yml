@@ -15,7 +15,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy provisioning scripts'
   inputs:
-    SourceFolder: product-aks-cluster-yaml-provisioning/productakscluster-yaml-provisioning/productakscluster
+    SourceFolder: productakscluster-yaml-provisioning/productakscluster
     TargetFolder: '$(build.artifactstagingdirectory)/iac'
     
 
