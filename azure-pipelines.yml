@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+ branches:
+   include:
+   - "*"
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy provisioning scripts'
+  inputs:
+    SourceFolder: product-aks-cluster-yaml-provisioning/productakscluster-yaml-provisioning/productakscluster
+    TargetFolder: '$(build.artifactstagingdirectory)/iac'
+    
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish infrastructure artifacts'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)/iac'
+    ArtifactName: iac
